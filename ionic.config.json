@@ -1,0 +1,7 @@
+{
+  "name": "frenchHeraldry",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
