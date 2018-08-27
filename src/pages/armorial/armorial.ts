@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as cheerio from 'cheerio';
 import * as jsonframe from 'jsonframe-cheerio';
@@ -20,9 +20,13 @@ import axios from 'axios';
 export class ArmorialPage {
 
   armorialList = [];
+  armorialDisplayedList = [];
 
+  armorialUrls = [];
   armorialDevUrls = ['assets/mock_armorial_hautes_alpes_wiki.html',
-    'assets/mock_armorial_ain_wiki.html']
+    'assets/mock_armorial_ain_wiki.html'];
+
+  @Input() searchInput: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -31,7 +35,7 @@ export class ArmorialPage {
     console.log('ionViewDidLoad ArmorialPage');
 
     let $;
-    
+
     this.armorialDevUrls.forEach(url => {
       axios.get(url, {
         headers: {
@@ -58,8 +62,23 @@ export class ArmorialPage {
           let tmpArmorial = $('body').scrape(frame, { string: true }).replace(/\[\d?\d?\d\]/g, '')
           tmpArmorial = JSON.parse(tmpArmorial);
           this.armorialList.push.apply(this.armorialList, tmpArmorial.coatsOfArms);
+
+          this.updateDislpayedList();
         });
-      });
+    });
+  }
+
+  onSearchChange(event) {
+    this.updateDislpayedList()
+  }
+
+  private updateDislpayedList() {
+    this.armorialDisplayedList = [];
+    this.armorialList.forEach(item => {
+      if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
+        this.armorialDisplayedList.push(item);
+    });
+    console.log(this.armorialDisplayedList);
   }
 
 }
