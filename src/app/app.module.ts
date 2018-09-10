@@ -9,11 +9,13 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ArmorialPage } from '../pages/armorial/armorial';
+import { BasesPage } from '../pages/bases/bases';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    BasesPage,
     ListPage,
     ArmorialPage
   ],
@@ -25,6 +27,7 @@ import { ArmorialPage } from '../pages/armorial/armorial';
   entryComponents: [
     MyApp,
     HomePage,
+    BasesPage,
     ListPage,
     ArmorialPage
   ],
