@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dictionary</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div padding>
+    <ion-segment [(ngModel)]="dictionaries">
+      <ion-segment-button value="partitions">
+        Partitions
+      </ion-segment-button>
+      <ion-segment-button value="colors">
+        Couleurs
+      </ion-segment-button>
+      <ion-segment-button value="charges">
+        Charges
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="dictionaries">
+    <ion-list *ngSwitchCase="'partitions'">
+        <ion-item text-wrap *ngFor="let a of partitionDisplayedList">
+          <ion-thumbnail item-start>
+            <img src="{{ a.imageUrl }}">
+          </ion-thumbnail>
+          <h2>{{ a.name }}</h2>
+          <p>{{ a.description }}</p>
+        </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'kittens'">
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="img/thumbnail-kitten-1.jpg">
+        </ion-thumbnail>
+        <h2>Luna</h2>
+      </ion-item>
+      ...
+    </ion-list>
+  </div>
+</ion-content>
