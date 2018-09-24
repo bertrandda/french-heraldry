@@ -43,14 +43,16 @@ export class DictionaryPage {
               "_d": [{
                 "name": "td b",
                 "imageUrl": ".image img @ src",
-                "description": "tr td || ^[^<].*"
+                "description": "_parent_"
+                //|| ^[^<].*
               }]
             }
           }
 
-          let tmpPartition = $('body').scrape(frame, { string: true }).replace(/\[\d?\d?\d\]/g, '')
-            .replace(/g\/\d*px/g, 'g/100px');
-          
+          let tmpPartition = $('body').scrape(frame, { string: true })
+            .replace(/\[\d?\d?\d\]/g, '')
+            .replace(/g\/\d*px/g, 'g/80px');
+
           tmpPartition = JSON.parse(tmpPartition);
           this.partitionList.push.apply(this.partitionList, tmpPartition.partitions);
 
