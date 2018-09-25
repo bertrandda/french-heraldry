@@ -17,12 +17,23 @@ export class DictionaryPage {
   partitionUrls = [];
   partitionDevUrls = ['assets/mock_partitions.html'];
 
+  colorList = [];
+  colorDisplayedList = [];
+
+  colorUrls = [];
+  colorDevUrls = ['assets/mock_colors.html'];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DictionaryPage');
 
+    this.loadPartitions();
+    this.loadColors();
+  }
+
+  private loadPartitions() {
     let $;
 
     this.partitionDevUrls.forEach(url => {
@@ -44,7 +55,6 @@ export class DictionaryPage {
                 "name": "td b",
                 "imageUrl": ".image img @ src",
                 "description": "_parent_"
-                //|| ^[^<].*
               }]
             }
           }
@@ -61,6 +71,38 @@ export class DictionaryPage {
     });
   }
 
+  private loadColors() {
+    let $;
+
+    this.colorDevUrls.forEach(url => {
+      axios.get(url, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+        }
+      })
+        .then(response => {
+          $ = cheerio.load(response.data);
+
+          let colors = [];
+
+          $('.wikitable tr').each(function (i, elem) {
+            if ($(this).attr('id')) {
+              let color = {};
+              color['name'] = $(this).find('dl dt').text();
+              color['imageUrl'] = $(this).find('.image img').attr('src') || '';
+              color['description'] = $(this).find('dl dd').html();
+              colors.push(color);
+            }
+          })
+
+          this.colorList.push.apply(this.colorList, colors);
+
+          this.updateDislpayedLists();
+        });
+    });
+  }
+
   private updateDislpayedLists() {
     // Partition list update
     this.partitionDisplayedList = [];
@@ -68,7 +110,16 @@ export class DictionaryPage {
       //   if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
       this.partitionDisplayedList.push(item);
     });
-    console.log(this.partitionDisplayedList);
+
+    // Color list update
+    this.colorDisplayedList = [];
+    this.colorList.forEach(item => {
+        // if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
+      if (item.imageUrl) item.imageUrl = item.imageUrl.replace(/g\/\d*px/g, 'g/80px');
+      this.colorDisplayedList.push(item);
+    });
+
+
   }
 
 }
