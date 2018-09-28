@@ -23,6 +23,12 @@ export class DictionaryPage {
   colorUrls = [];
   colorDevUrls = ['assets/mock_colors.html'];
 
+  chargeList = [];
+  chargeDisplayedList = [];
+
+  chargeUrls = [];
+  chargeDevUrls = ['assets/mock_meubles.html'];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -31,6 +37,7 @@ export class DictionaryPage {
 
     this.loadPartitions();
     this.loadColors();
+    this.loadCharges();
   }
 
   private loadPartitions() {
@@ -103,6 +110,49 @@ export class DictionaryPage {
     });
   }
 
+  private loadCharges() {
+    let $;
+
+    this.chargeDevUrls.forEach(url => {
+      axios.get(url, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+        }
+      })
+        .then(response => {
+          $ = cheerio.load(response.data);
+
+          let charges = [];
+
+          $('#mw-navigation').remove();
+
+          $('h3').each(function (i, elem) {
+            let charge = {};
+            charge['name'] = $(this).find('.mw-headline').text();
+            charge['description'] = '';
+            charge['imageUrl'] = '';
+            let next = $(this).next();
+
+            while (!next.is('h3') && !next.is('h2') && next.html() != null) {
+              if (next.hasClass('floatright') || next.hasClass('floatleft') || next.hasClass('thumb tright')) {
+                if (charge['imageUrl'] === '') charge['imageUrl'] = next.find('img').attr('src');
+              } else {
+                charge['description'] += next.html();
+              }
+              next = next.next();
+            }
+
+            charges.push(charge);
+          })
+
+          this.chargeList.push.apply(this.chargeList, charges);
+
+          this.updateDislpayedLists();
+        });
+    });
+  }
+
   private updateDislpayedLists() {
     // Partition list update
     this.partitionDisplayedList = [];
@@ -114,12 +164,18 @@ export class DictionaryPage {
     // Color list update
     this.colorDisplayedList = [];
     this.colorList.forEach(item => {
-        // if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
+      // if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
       if (item.imageUrl) item.imageUrl = item.imageUrl.replace(/g\/\d*px/g, 'g/80px');
       this.colorDisplayedList.push(item);
     });
 
-
+    // Charge list update
+    this.chargeDisplayedList = [];
+    this.chargeList.forEach(item => {
+      // if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
+      if (item.imageUrl) item.imageUrl = item.imageUrl.replace(/g\/\d*px/g, 'g/80px');
+      this.chargeDisplayedList.push(item);
+    });
   }
 
 }
