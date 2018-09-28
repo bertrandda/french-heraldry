@@ -11,6 +11,12 @@
 
 
 <ion-content padding>
+
+  <ion-searchbar [(ngModel)]="searchInput"
+    (ionInput)="onSearchChange($event)"
+    placeholder="Recherche">
+  </ion-searchbar>
+
   <div padding>
     <ion-segment [(ngModel)]="dictionaries">
       <ion-segment-button value="partitions">

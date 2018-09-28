@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as cheerio from 'cheerio';
 import * as jsonframe from 'jsonframe-cheerio';
@@ -28,6 +28,10 @@ export class DictionaryPage {
 
   chargeUrls = [];
   chargeDevUrls = ['assets/mock_meubles.html'];
+
+  dictionaries: string = "partitions";
+
+  @Input() searchInput: string = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -159,28 +163,34 @@ export class DictionaryPage {
     });
   }
 
+  onSearchChange(event) {
+    this.updateDislpayedLists()
+  }
+
   private updateDislpayedLists() {
     // Partition list update
     this.partitionDisplayedList = [];
     this.partitionList.forEach(item => {
-      //   if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
-      this.partitionDisplayedList.push(item);
+      if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
+        this.partitionDisplayedList.push(item);
     });
 
     // Color list update
     this.colorDisplayedList = [];
     this.colorList.forEach(item => {
-      // if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
-      if (item.imageUrl) item.imageUrl = item.imageUrl.replace(/g\/\d*px/g, 'g/80px');
-      this.colorDisplayedList.push(item);
+      if (item.name.toLowerCase().includes(this.searchInput.toLowerCase())) {
+        if (item.imageUrl) item.imageUrl = item.imageUrl.replace(/g\/\d*px/g, 'g/80px');
+        this.colorDisplayedList.push(item);
+      }
     });
 
     // Charge list update
     this.chargeDisplayedList = [];
     this.chargeList.forEach(item => {
-      // if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
-      if (item.imageUrl) item.imageUrl = item.imageUrl.replace(/g\/\d*px/g, 'g/80px');
-      this.chargeDisplayedList.push(item);
+      if (item.name.toLowerCase().includes(this.searchInput.toLowerCase())) {
+        if (item.imageUrl) item.imageUrl = item.imageUrl.replace(/g\/\d*px/g, 'g/80px');
+        this.chargeDisplayedList.push(item);
+      }
     });
   }
 
