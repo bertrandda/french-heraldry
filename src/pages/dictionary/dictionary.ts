@@ -126,6 +126,7 @@ export class DictionaryPage {
           let charges = [];
 
           $('#mw-navigation').remove();
+          $('.reference').remove();
 
           $('h3').each(function (i, elem) {
             let charge = {};
@@ -135,7 +136,7 @@ export class DictionaryPage {
             let next = $(this).next();
 
             while (!next.is('h3') && !next.is('h2') && next.html() != null) {
-              if (next.hasClass('floatright') || next.hasClass('floatleft') || next.hasClass('thumb tright')) {
+              if (next.hasClass('floatright') || next.hasClass('floatleft') || next.hasClass('thumb tright') || next.hasClass('gallery')) {
                 if (charge['imageUrl'] === '') charge['imageUrl'] = next.find('img').attr('src');
               } else {
                 charge['description'] += next.html();
@@ -143,7 +144,12 @@ export class DictionaryPage {
               next = next.next();
             }
 
-            charges.push(charge);
+            if (!(charge['imageUrl'] === '' && charge['description'] === '')) {
+              if (charge['imageUrl'] === '') {
+                charge['imageUrl'] = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Blason_%C3%A0_dessiner.svg/80px-Blason_%C3%A0_dessiner.svg.png';
+              }
+              charges.push(charge);
+            }
           })
 
           this.chargeList.push.apply(this.chargeList, charges);
