@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as cheerio from 'cheerio';
-import * as jsonframe from 'jsonframe-cheerio';
 import axios from 'axios';
 
 @IonicPage()
@@ -57,25 +56,17 @@ export class DictionaryPage {
         .then(response => {
           $ = cheerio.load(response.data);
 
-          jsonframe($) // initializing the plugin
+          let partitions = [];
 
-          let frame = {
-            "partitions": {
-              "_s": ".wikitable",
-              "_d": [{
-                "name": "td b",
-                "imageUrl": ".image img @ src",
-                "description": "_parent_"
-              }]
-            }
-          }
+          $('.wikitable').each(function (i, elem) {
+            let partition = {};
+            partition['name'] = $(this).find('tr td b').text();
+            partition['imageUrl'] = $(this).find('.image img').attr('src').replace(/g\/\d*px/g, 'g/80px') || '';
+            partition['description'] = $(this).find('tr').next().html();
+            partitions.push(partition);
+          })
 
-          let tmpPartition = $('body').scrape(frame, { string: true })
-            .replace(/\[\d?\d?\d\]/g, '')
-            .replace(/g\/\d*px/g, 'g/80px');
-
-          tmpPartition = JSON.parse(tmpPartition);
-          this.partitionList.push.apply(this.partitionList, tmpPartition.partitions);
+          this.partitionList.push.apply(this.partitionList, partitions);
 
           this.updateDislpayedLists();
         });
@@ -102,6 +93,7 @@ export class DictionaryPage {
               let color = {};
               color['name'] = $(this).find('dl dt').text();
               color['imageUrl'] = $(this).find('.image img').attr('src') || '';
+              color['imageUrl'] = color['imageUrl'].replace(/g\/\d*px/g, 'g/80px');
               color['description'] = $(this).find('dl dd').html();
               colors.push(color);
             }
@@ -141,7 +133,7 @@ export class DictionaryPage {
 
             while (!next.is('h3') && !next.is('h2') && next.html() != null) {
               if (next.hasClass('floatright') || next.hasClass('floatleft') || next.hasClass('thumb tright') || next.hasClass('gallery')) {
-                if (charge['imageUrl'] === '') charge['imageUrl'] = next.find('img').attr('src');
+                if (charge['imageUrl'] === '') charge['imageUrl'] = next.find('img').attr('src').replace(/g\/\d*px/g, 'g/80px');
               } else {
                 charge['description'] += next.html();
               }
@@ -179,7 +171,6 @@ export class DictionaryPage {
     this.colorDisplayedList = [];
     this.colorList.forEach(item => {
       if (item.name.toLowerCase().includes(this.searchInput.toLowerCase())) {
-        if (item.imageUrl) item.imageUrl = item.imageUrl.replace(/g\/\d*px/g, 'g/80px');
         this.colorDisplayedList.push(item);
       }
     });
@@ -188,7 +179,6 @@ export class DictionaryPage {
     this.chargeDisplayedList = [];
     this.chargeList.forEach(item => {
       if (item.name.toLowerCase().includes(this.searchInput.toLowerCase())) {
-        if (item.imageUrl) item.imageUrl = item.imageUrl.replace(/g\/\d*px/g, 'g/80px');
         this.chargeDisplayedList.push(item);
       }
     });
