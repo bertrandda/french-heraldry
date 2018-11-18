@@ -21,7 +21,7 @@ export class DictionaryPage {
 
   colorUrls = [];
   colorDevUrls = ['assets/mock_colors.html'];
-
+  
   chargeList = [];
   chargeDisplayedList = [];
 

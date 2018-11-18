@@ -2,6 +2,10 @@ page-dictionary {
 
 }
 
+ion-item {
+  border-bottom: 1px solid #dedede !important;
+}
+
 ion-thumbnail img {
   width: auto !important;
   height: auto !important;
@@ -19,4 +23,8 @@ a {
 
 dd {
   margin: 0;
+}
+
+.item-inner {
+  border-bottom: 0px !important;
 }

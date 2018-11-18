@@ -7,17 +7,11 @@
     <ion-title>Dictionary</ion-title>
   </ion-navbar>
 
-</ion-header>
-
-
-<ion-content padding>
-
-  <ion-searchbar [(ngModel)]="searchInput"
-    (ionInput)="onSearchChange($event)"
-    placeholder="Recherche">
-  </ion-searchbar>
-
-  <div padding>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="searchInput" (ionInput)="onSearchChange($event)" placeholder="Recherche" class="bar-header">
+    </ion-searchbar>
+  </ion-toolbar>
+  <ion-toolbar>
     <ion-segment [(ngModel)]="dictionaries">
       <ion-segment-button value="partitions">
         Partitions
@@ -29,7 +23,12 @@
         Charges
       </ion-segment-button>
     </ion-segment>
-  </div>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
 
   <div [ngSwitch]="dictionaries">
     <ion-list *ngSwitchCase="'partitions'">
