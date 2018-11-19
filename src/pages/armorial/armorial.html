@@ -13,15 +13,14 @@
     <ion-title>Armorial</ion-title>
   </ion-navbar>
 
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="searchInput" (ionInput)="onSearchChange($event)" placeholder="Recherche">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
-  <ion-searchbar [(ngModel)]="searchInput"
-    (ionInput)="onSearchChange($event)"
-    placeholder="Recherche">
-  </ion-searchbar>
-
   <ion-list *ngIf="armorialDisplayedList">
     <ion-item text-wrap *ngFor="let a of armorialDisplayedList">
       <ion-thumbnail item-start>
