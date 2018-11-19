@@ -58,14 +58,15 @@ export class DictionaryPage {
           $('.wikitable').each(function (i, elem) {
             let partition = {};
             partition['name'] = $(this).find('tr td b').text();
-            partition['imageUrl'] = $(this).find('.image img').attr('src').replace(/g\/\d*px/g, 'g/80px') || '';
+            partition['imageUrl'] = 'https:' + $(this).find('.image img').attr('src') || '';
+            partition['imageUrl'] = partition['imageUrl'].replace(/g\/\d*px/g, 'g/80px');
             partition['description'] = $(this).find('tr').next().html();
             partitions.push(partition);
           })
 
           this.partitionList.push.apply(this.partitionList, partitions);
 
-          this.updateDislpayedLists();
+          this.updateDisplayedLists();
         });
     });
   }
@@ -98,7 +99,7 @@ export class DictionaryPage {
 
           this.colorList.push.apply(this.colorList, colors);
 
-          this.updateDislpayedLists();
+          this.updateDisplayedLists();
         });
     });
   }
@@ -147,16 +148,16 @@ export class DictionaryPage {
 
           this.chargeList.push.apply(this.chargeList, charges);
 
-          this.updateDislpayedLists();
+          this.updateDisplayedLists();
         });
     });
   }
 
   onSearchChange(event) {
-    this.updateDislpayedLists()
+    this.updateDisplayedLists()
   }
 
-  private updateDislpayedLists() {
+  private updateDisplayedLists() {
     // Partition list update
     this.partitionDisplayedList = [];
     this.partitionList.forEach(item => {
