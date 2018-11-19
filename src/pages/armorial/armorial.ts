@@ -22,9 +22,7 @@ export class ArmorialPage {
   armorialList = [];
   armorialDisplayedList = [];
 
-  armorialUrls = [];
-  armorialDevUrls = ['assets/mock_armorial_hautes_alpes_wiki.html',
-    'assets/mock_armorial_ain_wiki.html'];
+  armorialUrls = ['https://fr.wikipedia.org/wiki/Armorial_des_communes_de_France'];
 
   @Input() searchInput: string = '';
 
@@ -36,7 +34,7 @@ export class ArmorialPage {
 
     let $;
 
-    this.armorialDevUrls.forEach(url => {
+    this.armorialUrls.forEach(url => {
       axios.get(url, {
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -44,26 +42,44 @@ export class ArmorialPage {
         }
       })
         .then(response => {
+  
           $ = cheerio.load(response.data);
 
-          jsonframe($) // initializing the plugin
+          jsonframe($);
 
-          let frame = {
-            "coatsOfArms": {
-              "_s": ".wikitable",
-              "_d": [{
-                "name": "caption a",
-                "imageUrl": "img @ src",
-                "blazon": "tbody td span"
-              }]
-            }
-          }
+          $('.wikitable').first().find('li a').each((i, elem) => {
+            // TODO remove before release
+            if (i > 1) return;
+            let $1;
+            axios.get('https://fr.wikipedia.org/' + elem.attribs.href, {
+              headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+              }
+            })
+              .then(response => {
+        
+                $1 = cheerio.load(response.data);
 
-          let tmpArmorial = $('body').scrape(frame, { string: true }).replace(/\[\d?\d?\d\]/g, '')
-          tmpArmorial = JSON.parse(tmpArmorial);
-          this.armorialList.push.apply(this.armorialList, tmpArmorial.coatsOfArms);
+                jsonframe($1);
 
-          this.updateDislpayedList();
+                let coatsOfArms = [];
+
+                $1('sup').remove();
+
+                $1('.wikitable').each(function (i, elem) {
+                  let coatOfArms = {};
+                  coatOfArms['name'] = $1(this).find('caption a').text();
+                  coatOfArms['imageUrl'] = 'https:' + $1(this).find('.image img').attr('src') || '';
+                  coatOfArms['blazon'] = $1(this).find('tbody td span').text();
+                  coatOfArms['imageUrl'] = coatOfArms['imageUrl'].replace(/g\/\d*px/g, 'g/80px');
+                  coatsOfArms.push(coatOfArms);
+                })
+
+                this.armorialList.push.apply(this.armorialList, coatsOfArms);
+                this.updateDislpayedList();
+              })
+          });
         });
     });
   }
@@ -78,7 +94,6 @@ export class ArmorialPage {
       if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
         this.armorialDisplayedList.push(item);
     });
-    console.log(this.armorialDisplayedList);
   }
 
 }

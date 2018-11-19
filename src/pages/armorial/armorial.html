@@ -17,8 +17,6 @@
 
 
 <ion-content padding>
-  <h3>Sources : wikipedia.org</h3>
-
   <ion-searchbar [(ngModel)]="searchInput"
     (ionInput)="onSearchChange($event)"
     placeholder="Recherche">
@@ -27,10 +25,10 @@
   <ion-list *ngIf="armorialDisplayedList">
     <ion-item text-wrap *ngFor="let a of armorialDisplayedList">
       <ion-thumbnail item-start>
-        <img src="{{ a.imageUrl }}">
+        <img [src]="a.imageUrl" [alt]="a.name">
       </ion-thumbnail>
       <h2>{{ a.name }}</h2>
-      <p>{{ a.blazon }}</p>
+      <p [innerHtml]="a.blazon"></p>
     </ion-item>
   </ion-list>
 </ion-content>
