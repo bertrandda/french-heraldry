@@ -34,7 +34,7 @@
     <ion-list *ngSwitchCase="'partitions'">
       <ion-item text-wrap *ngFor="let a of partitionDisplayedList">
         <ion-thumbnail item-start>
-          <img src="{{ a.imageUrl }}">
+          <img [src]="a.imageUrl" [alt]="a.name">
         </ion-thumbnail>
         <h2>{{ a.name }}</h2>
         <p [innerHtml]="a.description"></p>
@@ -44,7 +44,7 @@
     <ion-list *ngSwitchCase="'colors'">
       <ion-item text-wrap *ngFor="let a of colorDisplayedList">
         <ion-thumbnail item-start>
-          <img src="{{ a.imageUrl }}">
+          <img [src]="a.imageUrl" [alt]="a.name">
         </ion-thumbnail>
         <h2>{{ a.name }}</h2>
         <p [innerHtml]="a.description"></p>
@@ -54,7 +54,7 @@
     <ion-list *ngSwitchCase="'charges'">
       <ion-item text-wrap *ngFor="let a of chargeDisplayedList">
         <ion-thumbnail item-start>
-          <img src="{{ a.imageUrl }}">
+          <img [src]="a.imageUrl" [alt]="a.name">
         </ion-thumbnail>
         <h2>{{ a.name }}</h2>
         <p [innerHtml]="a.description"></p>

@@ -13,20 +13,17 @@ export class DictionaryPage {
   partitionList = [];
   partitionDisplayedList = [];
 
-  partitionUrls = [];
-  partitionDevUrls = ['assets/mock_partitions.html'];
+  partitionUrls = ['https://fr.wikipedia.org/wiki/Partition_h%C3%A9raldique'];
 
   colorList = [];
   colorDisplayedList = [];
 
-  colorUrls = [];
-  colorDevUrls = ['assets/mock_colors.html'];
+  colorUrls = ['https://fr.wikipedia.org/wiki/Couleur_(h%C3%A9raldique)'];
   
   chargeList = [];
   chargeDisplayedList = [];
 
-  chargeUrls = [];
-  chargeDevUrls = ['assets/mock_meubles.html'];
+  chargeUrls = ['https://fr.wikipedia.org/wiki/Liste_des_meubles_h%C3%A9raldiques'];
 
   dictionaries: string = "partitions";
 
@@ -46,7 +43,7 @@ export class DictionaryPage {
   private loadPartitions() {
     let $;
 
-    this.partitionDevUrls.forEach(url => {
+    this.partitionUrls.forEach(url => {
       axios.get(url, {
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -76,7 +73,7 @@ export class DictionaryPage {
   private loadColors() {
     let $;
 
-    this.colorDevUrls.forEach(url => {
+    this.colorUrls.forEach(url => {
       axios.get(url, {
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -92,7 +89,7 @@ export class DictionaryPage {
             if ($(this).attr('id')) {
               let color = {};
               color['name'] = $(this).find('dl dt').text();
-              color['imageUrl'] = $(this).find('.image img').attr('src') || '';
+              color['imageUrl'] = 'https:' + $(this).find('.image img').attr('src') || '';
               color['imageUrl'] = color['imageUrl'].replace(/g\/\d*px/g, 'g/80px');
               color['description'] = $(this).find('dl dd').html();
               colors.push(color);
@@ -109,7 +106,7 @@ export class DictionaryPage {
   private loadCharges() {
     let $;
 
-    this.chargeDevUrls.forEach(url => {
+    this.chargeUrls.forEach(url => {
       axios.get(url, {
         headers: {
           'Access-Control-Allow-Origin': '*',
@@ -133,7 +130,7 @@ export class DictionaryPage {
 
             while (!next.is('h3') && !next.is('h2') && next.html() != null) {
               if (next.hasClass('floatright') || next.hasClass('floatleft') || next.hasClass('thumb tright') || next.hasClass('gallery')) {
-                if (charge['imageUrl'] === '') charge['imageUrl'] = next.find('img').attr('src').replace(/g\/\d*px/g, 'g/80px');
+                if (charge['imageUrl'] === '') charge['imageUrl'] = 'https:' + next.find('img').attr('src').replace(/g\/\d*px/g, 'g/80px');
               } else {
                 charge['description'] += next.html();
               }
