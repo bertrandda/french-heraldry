@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="54"
+   height="64"
+   id="HSArgent">
+  <defs
+     id="Herald">
+    <linearGradient
+       id="ArgentLin">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="0"
+         id="ArgentLight" />
+      <stop
+         style="stop-color:#e0e0e0;stop-opacity:1"
+         offset="1"
+         id="ArgentDark" />
+    </linearGradient>
+    <radialGradient
+       cx="27"
+       cy="31.700001"
+       r="26"
+       fx="27"
+       fy="31.700001"
+       id="ArgentRad"
+       xlink:href="#ArgentLin"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.180769,0,-5.730385)" />
+    <path
+       d="M 1,1 L 53,1 L 53,48 C 53,64 33,53.4 27,62.4 C 21,53.4 1,63 1,48 L 1,1 z "
+       style="stroke-width:2"
+       id="Shield1" />
+    <path
+       d="M 27,1 L 53,1 L 53,48 C 53,64 33,53.4 27,62.4 L 27,1 z "
+       style="stroke:#000000;stroke-miterlimit:0"
+       id="Shield1R" />
+  </defs>
+  <g
+     id="Shield">
+    <use
+       style="fill:url(#ArgentRad)"
+       id="Field"
+       xlink:href="#Shield1" />
+    <use
+       style="fill:#ffffff"
+       id="Trick"
+       xlink:href="#Shield1R" />
+    <use
+       style="fill:none;stroke:#000000"
+       id="Border"
+       xlink:href="#Shield1" />
+  </g>
+</svg>

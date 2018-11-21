@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="54" height="64">
+<pattern patternUnits="userSpaceOnUse" width="4" height="4" id="m">
+<rect width="4" height="4" fill="#FFF" stroke="#000"/></pattern>
+<path d="M0,0h54v48C54,66 33,54 27,64C21,54 0,66 0,48z"/>
+<path fill="url(#m)" d="M27,2H52V48C52,63 32,52 27,61V2"/>
+</svg>
