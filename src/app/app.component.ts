@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ArmorialPage } from '../pages/armorial/armorial';
 import { BasesPage } from '../pages/bases/bases';
 import { DictionaryPage } from '../pages/dictionary/dictionary';
+import { FamilyArmorialPage } from '../pages/family-armorial/family-armorial';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,8 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Bases', component: BasesPage },
       { title: 'Dictionnaire', component: DictionaryPage },
-      { title: 'Armorial', component: ArmorialPage }
+      { title: 'Armorial', component: ArmorialPage },
+      { title: 'Armorial des familles', component: FamilyArmorialPage }
     ];
 
   }

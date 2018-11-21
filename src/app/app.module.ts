@@ -10,6 +10,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ArmorialPage } from '../pages/armorial/armorial';
 import { BasesPage } from '../pages/bases/bases';
 import { DictionaryPage } from '../pages/dictionary/dictionary'
+import { FamilyArmorialPage } from '../pages/family-armorial/family-armorial';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DictionaryPage } from '../pages/dictionary/dictionary'
     HomePage,
     BasesPage,
     DictionaryPage,
-    ArmorialPage
+    ArmorialPage,
+    FamilyArmorialPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { DictionaryPage } from '../pages/dictionary/dictionary'
     HomePage,
     BasesPage,
     DictionaryPage,
-    ArmorialPage
+    ArmorialPage,
+    FamilyArmorialPage
   ],
   providers: [
     StatusBar,
