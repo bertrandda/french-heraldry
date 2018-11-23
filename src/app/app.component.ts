@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ArmorialPage } from '../pages/armorial/armorial';
+import { MunicipalArmorialPage } from '../pages/municipal-armorial/municipal-armorial';
 import { BasesPage } from '../pages/bases/bases';
 import { DictionaryPage } from '../pages/dictionary/dictionary';
 import { FamilyArmorialPage } from '../pages/family-armorial/family-armorial';
@@ -27,7 +27,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Bases', component: BasesPage },
       { title: 'Dictionnaire', component: DictionaryPage },
-      { title: 'Armorial', component: ArmorialPage },
+      { title: 'Armorial des communes', component: MunicipalArmorialPage },
       { title: 'Armorial des familles', component: FamilyArmorialPage }
     ];
 

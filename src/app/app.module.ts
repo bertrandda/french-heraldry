@@ -7,9 +7,9 @@ import { HomePage } from '../pages/home/home';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ArmorialPage } from '../pages/armorial/armorial';
 import { BasesPage } from '../pages/bases/bases';
-import { DictionaryPage } from '../pages/dictionary/dictionary'
+import { DictionaryPage } from '../pages/dictionary/dictionary';
+import { MunicipalArmorialPage } from '../pages/municipal-armorial/municipal-armorial';
 import { FamilyArmorialPage } from '../pages/family-armorial/family-armorial';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { FamilyArmorialPage } from '../pages/family-armorial/family-armorial';
     HomePage,
     BasesPage,
     DictionaryPage,
-    ArmorialPage,
+    MunicipalArmorialPage,
     FamilyArmorialPage
   ],
   imports: [
@@ -31,13 +31,13 @@ import { FamilyArmorialPage } from '../pages/family-armorial/family-armorial';
     HomePage,
     BasesPage,
     DictionaryPage,
-    ArmorialPage,
+    MunicipalArmorialPage,
     FamilyArmorialPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

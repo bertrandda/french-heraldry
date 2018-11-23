@@ -14,10 +14,10 @@ import axios from 'axios';
 
 @IonicPage()
 @Component({
-  selector: 'page-armorial',
-  templateUrl: 'armorial.html',
+  selector: 'page-municipal-armorial',
+  templateUrl: 'municipal-armorial.html',
 })
-export class ArmorialPage {
+export class MunicipalArmorialPage {
 
   armorialList = [];
   armorialDisplayedList = [];

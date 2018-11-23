@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ArmorialPage } from './armorial';
+import { MunicipalArmorialPage } from './municipal-armorial';
 
 @NgModule({
   declarations: [
-    ArmorialPage,
+    MunicipalArmorialPage,
   ],
   imports: [
-    IonicPageModule.forChild(ArmorialPage),
+    IonicPageModule.forChild(MunicipalArmorialPage),
   ],
 })
 export class ArmorialPageModule {}
