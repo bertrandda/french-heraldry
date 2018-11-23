@@ -4,6 +4,7 @@ import * as cheerio from 'cheerio';
 import * as jsonframe from 'jsonframe-cheerio';
 import * as request from 'request';
 import axios from 'axios';
+import Utils from '../../app/utils';
 
 /**
  * Generated class for the MunicipalArmorialPage page.
@@ -48,8 +49,8 @@ export class MunicipalArmorialPage {
           jsonframe($);
 
           $('.wikitable').first().find('li a').each((i, elem) => {
-            // TODO remove before release
-            if (i > 1) return;
+            if (!Utils.isApp() && i > 1) return;
+            
             let $1;
             axios.get('https://fr.wikipedia.org/' + elem.attribs.href, {
               headers: {

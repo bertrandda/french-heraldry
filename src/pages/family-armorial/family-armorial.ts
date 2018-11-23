@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
+import Utils from '../../app/utils';
 
 /**
  * Generated class for the FamilyArmorialPage page.
@@ -47,9 +48,9 @@ export class FamilyArmorialPage {
           $('sup').remove();
 
           $('.wikitable tbody tr').each(function (i, elem) {
-            // TODO remove before release
-            if (i > 3) return;
+            if (!Utils.isApp() && i > 5) return;
             if ($(this).find('b').first().text() === 'Figure') return;
+            
             let coatOfArms = {};
             coatOfArms['name'] = $(this).find('b').first().text();
             coatOfArms['imageUrl'] = 'https:' + $(this).find('.image img').attr('src') || '';
