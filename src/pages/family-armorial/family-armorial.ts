@@ -41,7 +41,7 @@ export class FamilyArmorialPage {
       })
         .then(response => {
 
-          $ = cheerio.load(response.data);
+          $ = cheerio.load(response.data, { xmlMode: true });
           let coatsOfArms = [];
 
           $('sup').remove();

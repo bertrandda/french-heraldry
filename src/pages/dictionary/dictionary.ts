@@ -19,7 +19,7 @@ export class DictionaryPage {
   colorDisplayedList = [];
 
   colorUrls = ['https://fr.wikipedia.org/wiki/Couleur_(h%C3%A9raldique)'];
-  
+
   chargeList = [];
   chargeDisplayedList = [];
 
@@ -51,7 +51,7 @@ export class DictionaryPage {
         }
       })
         .then(response => {
-          $ = cheerio.load(response.data);
+          $ = cheerio.load(response.data, { xmlMode: true });
 
           let partitions = [];
 
@@ -82,7 +82,7 @@ export class DictionaryPage {
         }
       })
         .then(response => {
-          $ = cheerio.load(response.data);
+          $ = cheerio.load(response.data, { xmlMode: true });
 
           let colors = [];
 
@@ -115,7 +115,7 @@ export class DictionaryPage {
         }
       })
         .then(response => {
-          $ = cheerio.load(response.data);
+          $ = cheerio.load(response.data, { xmlMode: true });
 
           let charges = [];
 
