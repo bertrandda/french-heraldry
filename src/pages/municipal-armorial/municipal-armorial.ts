@@ -6,7 +6,7 @@ import * as request from 'request';
 import axios from 'axios';
 
 /**
- * Generated class for the ArmorialPage page.
+ * Generated class for the MunicipalArmorialPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -30,7 +30,7 @@ export class MunicipalArmorialPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ArmorialPage');
+    console.log('ionViewDidLoad MunicipalArmorialPage');
 
     let $;
 

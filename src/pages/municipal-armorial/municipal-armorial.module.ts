@@ -10,4 +10,4 @@ import { MunicipalArmorialPage } from './municipal-armorial';
     IonicPageModule.forChild(MunicipalArmorialPage),
   ],
 })
-export class ArmorialPageModule {}
+export class MunicipalArmorialPageModule {}
