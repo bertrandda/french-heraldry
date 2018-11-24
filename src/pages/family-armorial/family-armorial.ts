@@ -48,12 +48,13 @@ export class FamilyArmorialPage {
           $('sup').remove();
 
           $('.wikitable tbody tr').each(function (i, elem) {
-            if (!Utils.isApp() && i > 5) return;
+            if (!Utils.isApp() && i > 10) return;
             if ($(this).find('b').first().text() === 'Figure') return;
             
             let coatOfArms = {};
             coatOfArms['name'] = $(this).find('b').first().text();
-            coatOfArms['imageUrl'] = 'https:' + $(this).find('.image img').attr('src') || '';
+            coatOfArms['imageUrl'] = $(this).find('.image img').attr('src');
+            coatOfArms['imageUrl'] = coatOfArms['imageUrl'] ? 'https:' + coatOfArms['imageUrl'] : 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Blason_%C3%A0_dessiner.svg/100px-Blason_%C3%A0_dessiner.svg.png'
             let blazon = $(this).find('b').first().parent();
             blazon.find('b').first().remove();
             coatOfArms['blazon'] = blazon;
