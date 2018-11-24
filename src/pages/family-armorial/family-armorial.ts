@@ -57,6 +57,11 @@ export class FamilyArmorialPage {
             coatOfArms['imageUrl'] = coatOfArms['imageUrl'] ? 'https:' + coatOfArms['imageUrl'] : 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Blason_%C3%A0_dessiner.svg/100px-Blason_%C3%A0_dessiner.svg.png'
             let blazon = $(this).find('b').first().parent();
             blazon.find('b').first().remove();
+            blazon.find('.floatleft').remove();
+            blazon.find('.floatright').remove();
+            blazon.find('img').remove();
+            blazon.find('.bandeau-niveau-detail').remove();
+
             coatOfArms['blazon'] = blazon;
             coatOfArms['imageUrl'] = coatOfArms['imageUrl'].replace(/g\/\d*px/g, 'g/80px');
             coatsOfArms.push(coatOfArms);
