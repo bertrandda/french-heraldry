@@ -4,16 +4,24 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { BasesPage } from '../pages/bases/bases';
+import { DictionaryPage } from '../pages/dictionary/dictionary';
+import { MunicipalArmorialPage } from '../pages/municipal-armorial/municipal-armorial';
+import { FamilyArmorialPage } from '../pages/family-armorial/family-armorial';
+import { SplashPage } from '../pages/splash/splash';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    BasesPage,
+    DictionaryPage,
+    MunicipalArmorialPage,
+    FamilyArmorialPage,
+    SplashPage
   ],
   imports: [
     BrowserModule,
@@ -23,12 +31,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    BasesPage,
+    DictionaryPage,
+    MunicipalArmorialPage,
+    FamilyArmorialPage,
+    SplashPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
