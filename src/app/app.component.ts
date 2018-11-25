@@ -28,7 +28,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Bases', component: BasesPage },
       { title: 'Dictionnaire', component: DictionaryPage },
-      { title: 'Armorial des communes', component: MunicipalArmorialPage },
+      // { title: 'Armorial des communes', component: MunicipalArmorialPage },
       { title: 'Armorial des familles', component: FamilyArmorialPage }
     ];
 
