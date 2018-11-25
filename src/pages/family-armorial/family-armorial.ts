@@ -34,12 +34,7 @@ export class FamilyArmorialPage {
     let $;
 
     this.armorialUrls.forEach(url => {
-      axios.get(url, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-        }
-      })
+      axios.get(url)
         .then(response => {
 
           $ = cheerio.load(response.data, { xmlMode: true });

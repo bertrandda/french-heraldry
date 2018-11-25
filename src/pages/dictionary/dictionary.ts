@@ -44,12 +44,7 @@ export class DictionaryPage {
     let $;
 
     this.partitionUrls.forEach(url => {
-      axios.get(url, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-        }
-      })
+      axios.get(url)
         .then(response => {
           $ = cheerio.load(response.data, { xmlMode: true });
 
@@ -75,12 +70,7 @@ export class DictionaryPage {
     let $;
 
     this.colorUrls.forEach(url => {
-      axios.get(url, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-        }
-      })
+      axios.get(url)
         .then(response => {
           $ = cheerio.load(response.data, { xmlMode: true });
 
@@ -108,12 +98,7 @@ export class DictionaryPage {
     let $;
 
     this.chargeUrls.forEach(url => {
-      axios.get(url, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-        }
-      })
+      axios.get(url)
         .then(response => {
           $ = cheerio.load(response.data, { xmlMode: true });
 

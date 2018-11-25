@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as cheerio from 'cheerio';
-import * as jsonframe from 'jsonframe-cheerio';
-import * as request from 'request';
 import axios from 'axios';
 import Utils from '../../app/utils';
 
@@ -36,33 +34,19 @@ export class MunicipalArmorialPage {
     let $;
 
     this.armorialUrls.forEach(url => {
-      axios.get(url, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-        }
-      })
+      axios.get(url)
         .then(response => {
   
           $ = cheerio.load(response.data);
-
-          jsonframe($);
 
           $('.wikitable').first().find('li a').each((i, elem) => {
             if (!Utils.isApp() && i > 1) return;
             
             let $1;
-            axios.get('https://fr.wikipedia.org/' + elem.attribs.href, {
-              headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-              }
-            })
+            axios.get('https://fr.wikipedia.org/' + elem.attribs.href)
               .then(response => {
         
                 $1 = cheerio.load(response.data);
-
-                jsonframe($1);
 
                 let coatsOfArms = [];
 
