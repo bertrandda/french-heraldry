@@ -11,6 +11,7 @@ import { BasesPage } from '../pages/bases/bases';
 import { DictionaryPage } from '../pages/dictionary/dictionary';
 import { MunicipalArmorialPage } from '../pages/municipal-armorial/municipal-armorial';
 import { FamilyArmorialPage } from '../pages/family-armorial/family-armorial';
+import { SplashPage } from '../pages/splash/splash';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FamilyArmorialPage } from '../pages/family-armorial/family-armorial';
     BasesPage,
     DictionaryPage,
     MunicipalArmorialPage,
-    FamilyArmorialPage
+    FamilyArmorialPage,
+    SplashPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import { FamilyArmorialPage } from '../pages/family-armorial/family-armorial';
     BasesPage,
     DictionaryPage,
     MunicipalArmorialPage,
-    FamilyArmorialPage
+    FamilyArmorialPage,
+    SplashPage
   ],
   providers: [
     StatusBar,

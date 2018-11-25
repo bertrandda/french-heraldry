@@ -9,6 +9,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0,0,600,660"
    width="600"
    height="660"
    id="svg2"
@@ -39,13 +40,6 @@
          id="stop1004"
          style="stop-color:#000000;stop-opacity:0.125" />
     </linearGradient>
-    <inkscape:perspective
-       sodipodi:type="inkscape:persp3d"
-       inkscape:vp_x="0 : 526.18109 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_z="744.09448 : 526.18109 : 1"
-       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
-       id="perspective10" />
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3219"
@@ -58,50 +52,13 @@
        gradientTransform="matrix(1.3582674,0,0,1.3590925,-79.535371,-51.854497)"
        gradientUnits="userSpaceOnUse" />
   </defs>
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="286.72397"
-     inkscape:cy="481.89722"
-     inkscape:document-units="px"
-     inkscape:current-layer="layer1"
-     showgrid="true"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:object-nodes="false"
-     inkscape:window-width="886"
-     inkscape:window-height="779"
-     inkscape:window-x="23"
-     inkscape:window-y="2"
-     showguides="true"
-     inkscape:guide-bbox="true">
-    <inkscape:grid
-       type="xygrid"
-       id="grid2383"
-       visible="true"
-       enabled="false" />
-  </sodipodi:namedview>
-  <metadata
-     id="metadata7">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
   <g
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1">
+    
+    <!-- Begin eagle -->
+    <g class="eagle">
     <path
        id="rect10"
        style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none"
@@ -422,11 +379,18 @@
        d="M 342.81066,66.892767 C 343.14255,66.019712 343.14228,65.014044 343.39017,63.838388 C 343.46348,63.490702 343.54417,63.156956 343.6333,62.832579 C 345.13719,63.721111 347.43098,64.517206 349.3125,64.683058 C 351.03189,64.834618 353.18992,64.451389 354.64722,62.979862 C 356.07379,61.53936 356.78801,59.663857 356.77085,57.517775 C 356.75295,55.277915 356.06583,54.080146 355.45738,51.999336 C 355.77656,51.907405 356.0819,51.827875 356.36764,51.762564 C 357.46798,51.511059 358.26886,50.708087 358.55178,50.03033 C 358.86571,49.278267 359.01637,47.70776 359.07322,46.75 C 359.01637,47.70776 358.86571,49.278267 358.55178,50.03033 C 358.26886,50.708087 357.46798,51.511059 356.36764,51.762564 C 354.27665,52.240501 351.13549,53.479936 349.20835,54.767775 C 349.0927,54.845061 348.98142,54.922519 348.875,55 C 348.22512,55.473155 347.62474,56.023084 347.08472,56.604862 C 345.98259,57.79222 345.13188,59.112244 344.625,60.183058 C 344.06374,61.368754 343.6723,62.50034 343.39017,63.838388 C 343.14228,65.014044 343.14255,66.019712 342.81066,66.892767 z"
        style="fill:none;fill-opacity:1;stroke:#808080;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
        id="path903" />
+   </g>
+   <!-- End eagle -->
+
+   <g class="cotice">
     <path
        sodipodi:nodetypes="cccccc"
        d="M 1.5,1.5000031 L 65.14112,1.500006 L 534.8648,471.22551 C 517.4741,497.42941 497.74,520.60261 477.2768,540.91631 L 1.5,65.138355 L 1.5,1.5000031 z"
        style="fill:#f00000;fill-opacity:1;stroke:#000000;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;opacity:1;color:#000000;fill-rule:nonzero;stroke-linecap:round;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        id="path20" />
+   </g>
+
+   <g class="escutcheon">
     <path
        sodipodi:nodetypes="cccccc"
        d="M 1.5,1.5 L 598.5,1.5 L 598.5,260 C 598.5,546.7 300,658.392 300,658.392 C 300,658.392 1.5,546.7 1.5,260 L 1.5,1.5 z"
@@ -437,5 +401,6 @@
        style="fill:url(#radialGradient3225);fill-opacity:1;stroke:#000000;stroke-width:3;stroke-miterlimit:4;stroke-dasharray:none"
        d="M 1.5,1.5 L 598.5,1.5 L 598.5,260 C 598.5,546.7 300,658.392 300,658.392 C 300,658.392 1.5,546.7 1.5,260 L 1.5,1.5 z"
        sodipodi:nodetypes="cccccc" />
+   </g>
   </g>
 </svg>
