@@ -23,3 +23,7 @@ All data for dictionnary/armorials are scraped from Wikipedia, connection is req
 * Run the server: `ionic serve`
 
 You can also run application on your device, more informations [here](https://ionicframework.com/docs/intro/deploying/).
+
+## License
+
+MIT © Bertrand d'Aure

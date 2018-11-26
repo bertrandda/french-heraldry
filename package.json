@@ -2,6 +2,7 @@
   "name": "french-heraldry",
   "version": "0.1.0",
   "author": "Bertrand d'Aure",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "ionic-app-scripts serve",
