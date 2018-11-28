@@ -1,16 +1,35 @@
 page-bases {
 
-}
-
-.itemTitle {
-    text-align: center;
-    font-weight: bold !important;
-}
-
-.moreInfo {
-    font-style: italic;
-}
-
-.img-shield {
-    width: 80px;
+    h2 {
+        border-bottom: 1px solid #eaecef;
+    }
+    
+    h3 {
+        color: #707070;
+    }
+    
+    .itemTitle {
+        text-align: center;
+        font-weight: bold !important;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    .moreInfo {
+        font-style: italic;
+    }
+    
+    .img-shield {
+        width: 80px;
+    }
+    
+    .position-row {
+        align-items: center;
+    }
+    
+    .position-row-center {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+    
 }
