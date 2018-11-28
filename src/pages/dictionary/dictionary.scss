@@ -1,30 +1,30 @@
 page-dictionary {
 
-}
-
-ion-item {
-  border-bottom: 1px solid #dedede !important;
-}
-
-ion-thumbnail img {
-  width: auto !important;
-  height: auto !important;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-a {
-  pointer-events: none;
-  cursor: default;
-  text-decoration: inherit;
-  color: inherit;
-  font-weight: bold;
-}
-
-dd {
-  margin: 0;
-}
-
-.item-inner {
-  border-bottom: 0px !important;
+  ion-item {
+    border-bottom: 1px solid #dedede !important;
+  }
+  
+  ion-thumbnail img {
+    width: auto !important;
+    height: auto !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  a {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: inherit;
+    color: inherit;
+    font-weight: bold;
+  }
+  
+  dd {
+    margin: 0;
+  }
+  
+  .item-inner {
+    border-bottom: 0px !important;
+  }
+  
 }
