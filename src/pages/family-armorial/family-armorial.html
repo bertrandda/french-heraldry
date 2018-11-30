@@ -22,12 +22,8 @@
 
 <ion-content padding>
   <ion-list *ngIf="armorialDisplayedList">
-    <ion-item text-wrap *ngFor="let a of armorialDisplayedList">
-      <ion-thumbnail item-start>
-        <img [src]="a.imageUrl" [alt]="a.name">
-      </ion-thumbnail>
-      <h2>{{ a.name }}</h2>
-      <p [innerHtml]="a.blazon"></p>
-    </ion-item>
+    <item-emblem-list *ngFor="let a of armorialDisplayedList"
+      [imageUrl]="a.imageUrl" [title]="a.name" [description]="a.blazon">
+    </item-emblem-list>
   </ion-list>
 </ion-content>
