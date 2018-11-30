@@ -12,6 +12,7 @@ import { DictionaryPage } from '../pages/dictionary/dictionary';
 import { MunicipalArmorialPage } from '../pages/municipal-armorial/municipal-armorial';
 import { FamilyArmorialPage } from '../pages/family-armorial/family-armorial';
 import { SplashPage } from '../pages/splash/splash';
+import { ItemEmblemListComponent } from '../components/item-emblem-list/item-emblem-list';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SplashPage } from '../pages/splash/splash';
     DictionaryPage,
     MunicipalArmorialPage,
     FamilyArmorialPage,
-    SplashPage
+    SplashPage,
+    ItemEmblemListComponent
   ],
   imports: [
     BrowserModule,
