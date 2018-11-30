@@ -1,3 +1,13 @@
 page-family-armorial {
+    
+    ion-item {
+        border-bottom: 1px solid #dedede !important;
+    }
 
+    ion-thumbnail img {
+        width: auto !important;
+        height: auto !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
