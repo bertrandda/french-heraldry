@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import Utils from '../../app/utils';
@@ -25,12 +26,39 @@ export class FamilyArmorialPage {
 
   @Input() searchInput: string = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FamilyArmorialPage');
+    if (!Utils.isApp()) this.storage.clear();
+    this.storage.get('armorial-data')
+      .then((val) => {
+        if (val !== null) {
+          this.armorialList = val;
+          this.updateDislpayedList();
+        } else {
+          this.downloadData();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
+  onSearchChange(event) {
+    this.updateDislpayedList()
+  }
+
+  private updateDislpayedList() {
+    this.armorialDisplayedList = [];
+    this.armorialList.forEach(item => {
+      if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
+        this.armorialDisplayedList.push(item);
+    });
+  }
+
+  private downloadData() {
     let $;
 
     this.armorialUrls.forEach(url => {
@@ -45,7 +73,7 @@ export class FamilyArmorialPage {
           $('.wikitable tbody tr').each(function (i, elem) {
             if (!Utils.isApp() && i > 10) return;
             if ($(this).find('b').first().text() === 'Figure') return;
-            
+
             let coatOfArms = {};
             coatOfArms['name'] = $(this).find('b').first().text();
             coatOfArms['imageUrl'] = $(this).find('.image img').attr('src');
@@ -58,26 +86,15 @@ export class FamilyArmorialPage {
             blazon.find('img').remove();
             blazon.find('.bandeau-niveau-detail').remove();
 
-            coatOfArms['blazon'] = blazon;
+            coatOfArms['blazon'] = blazon.html();
             coatOfArms['imageUrl'] = coatOfArms['imageUrl'].replace(/g\/\d*px/g, 'g/80px');
             coatsOfArms.push(coatOfArms);
           })
 
           this.armorialList.push.apply(this.armorialList, coatsOfArms);
           this.updateDislpayedList();
+          this.storage.set('armorial-data', this.armorialList);
         });
-    });
-  }
-
-  onSearchChange(event) {
-    this.updateDislpayedList()
-  }
-
-  private updateDislpayedList() {
-    this.armorialDisplayedList = [];
-    this.armorialList.forEach(item => {
-      if (item.name.toLowerCase().includes(this.searchInput.toLowerCase()))
-        this.armorialDisplayedList.push(item);
     });
   }
 
