@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import * as cheerio from 'cheerio';
 import axios from 'axios';
+import Utils from '../../app/utils';
 
 @IonicPage()
 @Component({
@@ -29,18 +31,54 @@ export class DictionaryPage {
 
   @Input() searchInput: string = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DictionaryPage');
 
-    this.loadPartitions();
-    this.loadColors();
-    this.loadCharges();
+    if (!Utils.isApp()) this.storage.clear();
+    this.storage.get('partitions-data')
+      .then((val) => {
+        if (val !== null) {
+          this.partitionList = val;
+          this.updateDisplayedLists();
+        } else {
+          this.downloadPartitions();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+      this.storage.get('colors-data')
+      .then((val) => {
+        if (val !== null) {
+          this.colorList = val;
+          this.updateDisplayedLists();
+        } else {
+          this.downloadColors();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+      this.storage.get('charges-data')
+      .then((val) => {
+        if (val !== null) {
+          this.chargeList = val;
+          this.updateDisplayedLists();
+        } else {
+          this.downloadCharges();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  private loadPartitions() {
+  private downloadPartitions() {
     let $;
 
     this.partitionUrls.forEach(url => {
@@ -62,11 +100,12 @@ export class DictionaryPage {
           this.partitionList.push.apply(this.partitionList, partitions);
 
           this.updateDisplayedLists();
+          this.storage.set('partitions-data', this.partitionList);
         });
     });
   }
 
-  private loadColors() {
+  private downloadColors() {
     let $;
 
     this.colorUrls.forEach(url => {
@@ -90,11 +129,12 @@ export class DictionaryPage {
           this.colorList.push.apply(this.colorList, colors);
 
           this.updateDisplayedLists();
+          this.storage.set('colors-data', this.colorList);
         });
     });
   }
 
-  private loadCharges() {
+  private downloadCharges() {
     let $;
 
     this.chargeUrls.forEach(url => {
@@ -134,6 +174,7 @@ export class DictionaryPage {
           this.chargeList.push.apply(this.chargeList, charges);
 
           this.updateDisplayedLists();
+          this.storage.set('charges-data', this.chargeList);
         });
     });
   }
