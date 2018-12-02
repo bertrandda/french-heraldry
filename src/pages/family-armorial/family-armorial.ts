@@ -87,7 +87,7 @@ export class FamilyArmorialPage {
             blazon.find('.bandeau-niveau-detail').remove();
 
             coatOfArms['blazon'] = blazon.html();
-            coatOfArms['imageUrl'] = coatOfArms['imageUrl'].replace(/g\/\d*px/g, 'g/80px');
+            coatOfArms['imageUrl'] = Utils.optimizeImageUrl(coatOfArms['imageUrl']);
             coatsOfArms.push(coatOfArms);
           })
 

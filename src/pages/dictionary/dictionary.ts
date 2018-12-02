@@ -92,8 +92,9 @@ export class DictionaryPage {
             let partition = {};
             partition['name'] = $(this).find('tr td b').text();
             partition['imageUrl'] = 'https:' + $(this).find('.image img').attr('src') || '';
-            partition['imageUrl'] = partition['imageUrl'].replace(/g\/\d*px/g, 'g/80px');
+            partition['imageUrl'] = Utils.optimizeImageUrl(partition['imageUrl']);
             partition['description'] = $(this).find('tr').next().html();
+            
             partitions.push(partition);
           })
 
@@ -120,7 +121,7 @@ export class DictionaryPage {
               let color = {};
               color['name'] = $(this).find('dl dt').text();
               color['imageUrl'] = 'https:' + $(this).find('.image img').attr('src') || '';
-              color['imageUrl'] = color['imageUrl'].replace(/g\/\d*px/g, 'g/80px');
+              color['imageUrl'] = Utils.optimizeImageUrl(color['imageUrl']);
               color['description'] = $(this).find('dl dd').html();
               colors.push(color);
             }
@@ -156,7 +157,7 @@ export class DictionaryPage {
 
             while (!next.is('h3') && !next.is('h2') && next.html() != null) {
               if (next.hasClass('floatright') || next.hasClass('floatleft') || next.hasClass('thumb tright') || next.hasClass('gallery')) {
-                if (charge['imageUrl'] === '') charge['imageUrl'] = 'https:' + next.find('img').attr('src').replace(/g\/\d*px/g, 'g/80px');
+                if (charge['imageUrl'] === '') charge['imageUrl'] = 'https:' + Utils.optimizeImageUrl(next.find('img').attr('src'));
               } else {
                 charge['description'] += next.html();
               }
@@ -165,7 +166,7 @@ export class DictionaryPage {
 
             if (!(charge['imageUrl'] === '' && charge['description'] === '')) {
               if (charge['imageUrl'] === '') {
-                charge['imageUrl'] = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Blason_%C3%A0_dessiner.svg/80px-Blason_%C3%A0_dessiner.svg.png';
+                charge['imageUrl'] = 'https://upload.wikimedia.org/wikipedia/commons/3/3b/Blason_%C3%A0_dessiner.svg';
               }
               charges.push(charge);
             }
