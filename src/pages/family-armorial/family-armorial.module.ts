@@ -8,6 +8,7 @@ import { ComponentsModule } from '../../components/components.module';
     FamilyArmorialPage,
   ],
   imports: [
+    ComponentsModule,
     IonicPageModule.forChild(FamilyArmorialPage)
   ],
 })
