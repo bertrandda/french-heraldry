@@ -34,7 +34,7 @@ export class MunicipalArmorialPage {
     let $;
 
     this.armorialUrls.forEach(url => {
-      axios.get(url)
+      Utils.request(url)
         .then(response => {
   
           $ = cheerio.load(response.data);

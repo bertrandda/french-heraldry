@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import * as cheerio from 'cheerio';
-import axios from 'axios';
 import Utils from '../../app/utils';
 
 @IonicPage()
@@ -51,7 +50,7 @@ export class DictionaryPage {
         console.log(err);
       });
 
-      this.storage.get('colors-data')
+    this.storage.get('colors-data')
       .then((val) => {
         if (val !== null) {
           this.colorList = val;
@@ -64,7 +63,7 @@ export class DictionaryPage {
         console.log(err);
       });
 
-      this.storage.get('charges-data')
+    this.storage.get('charges-data')
       .then((val) => {
         if (val !== null) {
           this.chargeList = val;
@@ -82,7 +81,7 @@ export class DictionaryPage {
     let $;
 
     this.partitionUrls.forEach(url => {
-      axios.get(url)
+      Utils.request(url)
         .then(response => {
           $ = cheerio.load(response.data, { xmlMode: true });
 
@@ -94,7 +93,7 @@ export class DictionaryPage {
             partition['imageUrl'] = 'https:' + $(this).find('.image img').attr('src') || '';
             partition['imageUrl'] = Utils.optimizeImageUrl(partition['imageUrl']);
             partition['description'] = $(this).find('tr').next().html();
-            
+
             partitions.push(partition);
           })
 
@@ -110,7 +109,7 @@ export class DictionaryPage {
     let $;
 
     this.colorUrls.forEach(url => {
-      axios.get(url)
+      Utils.request(url)
         .then(response => {
           $ = cheerio.load(response.data, { xmlMode: true });
 
@@ -139,7 +138,7 @@ export class DictionaryPage {
     let $;
 
     this.chargeUrls.forEach(url => {
-      axios.get(url)
+      Utils.request(url)
         .then(response => {
           $ = cheerio.load(response.data, { xmlMode: true });
 

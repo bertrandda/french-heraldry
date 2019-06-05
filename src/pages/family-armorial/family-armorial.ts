@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import axios from 'axios';
 import * as cheerio from 'cheerio';
 import Utils from '../../app/utils';
 
@@ -62,7 +61,7 @@ export class FamilyArmorialPage {
     let $;
 
     this.armorialUrls.forEach(url => {
-      axios.get(url)
+      Utils.request(url)
         .then(response => {
 
           $ = cheerio.load(response.data, { xmlMode: true });
