@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.0"
+   width="54"
+   height="64"
+   id="HSVert">
+  <defs
+     id="Herald">
+    <pattern
+       patternTransform="translate(28,0.5)rotate(135)"
+       id="HatchD"
+       xlink:href="#Hatch" />
+    <pattern
+       id="Hatch"
+       patternTransform="translate(70,0)"
+       height="64"
+       width="4"
+       patternUnits="userSpaceOnUse">
+      <g
+         transform="translate(-64,0)"
+         id="gHatch">
+        <rect
+           y="0"
+           x="64"
+           height="65"
+           width="4"
+           id="HatchW"
+           style="fill:#ffffff" />
+        <rect
+           y="0"
+           x="67"
+           height="65"
+           width="2"
+           id="HatchB" />
+      </g>
+    </pattern>
+    <path
+       d="M 1,1 L 53,1 L 53,48 C 53,64 33,53.4 27,62.4 C 21,53.4 1,63 1,48 L 1,1 z "
+       style="stroke-width:2"
+       id="Shield1" />
+    <path
+       d="M 27,1 L 53,1 L 53,48 C 53,64 33,53.4 27,62.4 L 27,1 z "
+       style="stroke:#000000;stroke-miterlimit:0"
+       id="Shield1R" />
+  </defs>
+  <g
+     id="Shield">
+    <use
+       style="fill:#00c000"
+       id="Field"
+       xlink:href="#Shield1" />
+    <use
+       style="fill:url(#HatchD)"
+       id="Trick"
+       xlink:href="#Shield1R" />
+    <use
+       style="fill:none;stroke:#000000"
+       id="Border"
+       xlink:href="#Shield1" />
+  </g>
+</svg>
