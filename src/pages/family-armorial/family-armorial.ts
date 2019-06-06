@@ -70,7 +70,7 @@ export class FamilyArmorialPage {
           $('sup').remove();
 
           $('.wikitable tbody tr').each(function (i, elem) {
-            if (!Utils.isApp() && i > 10) return;
+            if (!Utils.isApp() && !document.URL.startsWith('https') && i > 10) return;
             if ($(this).find('b').first().text() === 'Figure') return;
 
             let coatOfArms = {};
